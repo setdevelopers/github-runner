@@ -43,7 +43,7 @@ RUN curl --silent --proto '=https' --tlsv1.2 -fOL https://download.docker.com/li
     rm docker-${DOCKER_VERSION}.tgz
 
 # Install Actions Runner
-ARG ACTIONS_RUNNER_VERSION="2.322.0"
+ARG ACTIONS_RUNNER_VERSION="2.328.0"
  
 RUN mkdir actions-runner && \
     cd actions-runner && \
