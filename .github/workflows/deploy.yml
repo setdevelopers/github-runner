@@ -1,11 +1,13 @@
 name: Create and publish a Docker image
 
 on:
+  schedule:
+    - cron: "0 0 1 * *"
   push:
     branches:
-      - 'beta'
-      - 'main'
-      
+      - "beta"
+      - "main"
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
