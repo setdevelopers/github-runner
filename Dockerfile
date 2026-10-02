@@ -43,9 +43,8 @@ RUN curl --silent --proto '=https' --tlsv1.2 -fOL https://download.docker.com/li
     rm docker-${DOCKER_VERSION}.tgz
 
 # Install Actions Runner
-ARG ACTIONS_RUNNER_VERSION=$(curl --silent "https://api.github.com/repos/actions/runner/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
- 
-RUN mkdir actions-runner && \
+RUN ACTIONS_RUNNER_VERSION=$(curl --silent "https://api.github.com/repos/actions/runner/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/') && \
+    mkdir actions-runner && \
     cd actions-runner && \
     curl --silent --proto '=https' --tlsv1.2 -fOL https://github.com/actions/runner/releases/download/v${ACTIONS_RUNNER_VERSION}/actions-runner-linux-x64-${ACTIONS_RUNNER_VERSION}.tar.gz -o actions-runner-linux-x64-${ACTIONS_RUNNER_VERSION}.tar.gz && \
     tar xzf actions-runner-linux-x64-${ACTIONS_RUNNER_VERSION}.tar.gz && \
